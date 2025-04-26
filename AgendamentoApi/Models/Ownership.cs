@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AgendamentoApi.Models;
 
-public class Poperty
+public class Ownership
 {
     [Key]
     public Guid Id { get; set; }
@@ -12,7 +12,7 @@ public class Poperty
     public string Description { get; set; }
 
     public bool AcceptsPrePayment { get; set; }
-    public User Owner { get; set; }
+    public User Owner { get; set; } = new();
     public List<Appointment> Appointments { get; set; } = new();
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
