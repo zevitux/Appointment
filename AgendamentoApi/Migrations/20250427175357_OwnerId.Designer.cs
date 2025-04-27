@@ -4,6 +4,7 @@ using AgendamentoApi.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AgendamentoApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250427175357_OwnerId")]
+    partial class OwnerId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -106,15 +109,6 @@ namespace AgendamentoApi.Migrations
                     b.Property<Guid>("AppointmentId")
                         .HasColumnType("char(36)");
 
-                    b.Property<bool>("IdPaid")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<bool>("IsCancelled")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<bool>("IsRefunded")
-                        .HasColumnType("tinyint(1)");
-
                     b.Property<DateTime>("PaymentDate")
                         .HasColumnType("datetime(6)");
 
@@ -126,14 +120,9 @@ namespace AgendamentoApi.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("char(36)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("AppointmentId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Transactions");
                 });
@@ -219,15 +208,7 @@ namespace AgendamentoApi.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("AgendamentoApi.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Appointment");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("AgendamentoApi.Models.Ownership", b =>
