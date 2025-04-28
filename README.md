@@ -18,7 +18,7 @@ This project is a robust Booking API designed to manage service appointments (e.
 - 📆 **Booking Management**
   - Create, edit, view, and cancel appointments
   - Service owners can approve, reschedule, or cancel bookings
-- 💳 **Payment Integration**
+- 💳 **Payment Integration (Fake)**
   - PIX: QR Code generation
   - PayPal: Payment link generation
 - 🛠️ **Admin System**
@@ -34,7 +34,7 @@ This project is a robust Booking API designed to manage service appointments (e.
 - **.NET Core (C#)** — Backend Framework
 - **Entity Framework Core** — Database ORM
 - **JWT (JSON Web Tokens)** — Authentication
-- **PIX and PayPal APIs** — Payment processing
+- **PIX and PayPal APIs (Fakes)** — Payment processing
 
 ---
 
