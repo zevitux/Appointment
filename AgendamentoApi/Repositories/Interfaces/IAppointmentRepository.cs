@@ -2,7 +2,7 @@ using AgendamentoApi.Models;
 
 namespace AgendamentoApi.Repositories.Interfaces;
 
-public interface IAppoitmentRepository
+public interface IAppointmentRepository
 {
     Task<Appointment?> GetAppointmentByIdAsync(Guid appointmentId);
     Task<List<Appointment>> GetAllAppointmentsAsync();

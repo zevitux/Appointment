@@ -67,7 +67,6 @@ public class OwnershipRepository : IOwnershipRepository
             await _context.SaveChangesAsync();
 
             _logger.LogInformation("Ownership created: {OwnerId}", ownership.OwnerId);
-
             return ownership;
         }
         catch (Exception)

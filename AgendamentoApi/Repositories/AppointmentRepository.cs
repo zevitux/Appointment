@@ -5,10 +5,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AgendamentoApi.Repositories;
 
-public class AppointmentRepository : IAppoitmentRepository
+public class AppointmentRepository : IAppointmentRepository
 {
     private readonly AppDbContext _context;
-    private readonly ILogger<IAppoitmentRepository> _logger;
+    private readonly ILogger<IAppointmentRepository> _logger;
 
     public AppointmentRepository(AppDbContext context, ILogger<AppointmentRepository> logger)
     {
