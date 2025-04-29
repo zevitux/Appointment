@@ -55,27 +55,27 @@ public class AuthService : IAuthService
             return null;
         }
 
-        if (string.IsNullOrWhiteSpace(request.Role))
+        if (string.IsNullOrWhiteSpace(request.Name) || request.Name.Length < 3)
         {
-            _logger.LogWarning($"Role is required");
+            _logger.LogWarning($"User with Name: {request.Name} is invalid");
             return null;
         }
 
-        var validRoles = new[] { "User", "Seller" };
-        var normalizedRole = Array.Find(validRoles, p =>  p.Equals(request.Role.Trim(),StringComparison.OrdinalIgnoreCase));
-
-        if (normalizedRole == null)
+        if (string.IsNullOrWhiteSpace(request.Password) || request.Password.Length < 8)
         {
-            _logger.LogWarning("Role is required");
+            _logger.LogWarning("Password must be greater than 8 characters");
             return null;
         }
 
-        var user = new User()
+        var user = new User
         {
             Id = Guid.NewGuid(),
-            Email = normalizedEmail,
-            Role = request.Role,
-            CreatedAt = DateTime.UtcNow
+            Name = request.Name.Trim(),
+            Email = request.Email,
+            Role = "User", // Default role
+            IsBanned = false,
+            CreatedAt = DateTime.UtcNow,
+            UpdatedAt = DateTime.UtcNow,
         };
         
         user.PasswordHash = new PasswordHasher<User>().HashPassword(user, request.Password);

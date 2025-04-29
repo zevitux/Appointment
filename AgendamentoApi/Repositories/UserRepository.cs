@@ -76,21 +76,20 @@ public class UserRepository : IUserRepository
         }
     }
 
-    public async Task<User> UpdateUserAsync(Guid userId)
+    public async Task<User> UpdateUserAsync(User user)
     {
         try
         {
-            var existingUser = await _context.Users.FindAsync(userId);
+            var existingUser = await _context.Users.FindAsync(user);
             if (existingUser == null)
                 throw new KeyNotFoundException("User not found!");
 
-            _context.Entry(existingUser).CurrentValues.SetValues(userId);
             await _context.SaveChangesAsync();
             return existingUser;
         }
         catch (Exception)
         {
-            _logger.LogError("Error updating user: {UserId}", userId);
+            _logger.LogError("Error updating user: {UserId}", user);
             throw;
         }
     }
