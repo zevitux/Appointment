@@ -62,7 +62,7 @@ public class UserController : ControllerBase
         }
     }
     
-    [HttpPut("{id}")]
+    [HttpPut("{userId}")]
     public async Task<ActionResult<UserResponseDto>> UpdateUser(Guid userId, UpdateRequestDto request)
     {
         try
@@ -77,7 +77,7 @@ public class UserController : ControllerBase
         }
     }
 
-    [HttpDelete("{id}")]
+    [HttpDelete("{userId}")]
     public async Task<ActionResult<UserResponseDto>> DeleteUser(Guid userId)
     {
         try

@@ -29,7 +29,7 @@ public class OwnershipRepository : IOwnershipRepository
         }
     }
 
-    public async Task<List<Ownership>> GetPropertyByOwnershipAsync(Guid ownerId)
+    public async Task<List<Ownership>> GetPropertyByOwnerAsync(Guid ownerId)
     {
         try
         {
@@ -76,7 +76,7 @@ public class OwnershipRepository : IOwnershipRepository
         }
     }
 
-    public async Task<Ownership> UpdateOwnershipAsync(Guid ownershipId)
+    public async Task<Ownership> UpdateOwnershipAsync(Guid ownershipId, Ownership updatedOwnership)
     {
         try
         {
@@ -84,7 +84,7 @@ public class OwnershipRepository : IOwnershipRepository
             if (existingOwnership == null)
                 throw new KeyNotFoundException($"Ownership with Id: {ownershipId} doesn't exist");
 
-            _context.Entry(existingOwnership).CurrentValues.SetValues(ownershipId);
+            _context.Entry(existingOwnership).CurrentValues.SetValues(updatedOwnership);
             await _context.SaveChangesAsync();
             return existingOwnership;
         }
