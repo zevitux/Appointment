@@ -36,9 +36,4 @@ This project is a robust Booking API designed to manage service appointments (e.
 - **JWT (JSON Web Tokens)** — Authentication
 - **PIX and PayPal APIs (Fakes)** — Payment processing
 
----
-
-## 📈 Future Plans
-
-I plan to consume this API once I am more advanced in front-end development to build a full-featured online booking platform.
 
